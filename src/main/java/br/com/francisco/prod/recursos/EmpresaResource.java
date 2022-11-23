@@ -38,6 +38,11 @@ public class EmpresaResource {
     @Autowired
     private RelatorioService relatorioService;
 
+    @GetMapping
+    public ResponseEntity<List<Empresa>> buscarTodos(){
+        return ResponseEntity.ok().body(servico.buscarTodos());
+    }
+
     @GetMapping(value = ID)
     public ResponseEntity<Empresa> buscarPorId(@PathVariable Long id){
         return ResponseEntity.ok().body(servico.buscarPorId(id));
@@ -62,11 +67,6 @@ public class EmpresaResource {
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=Relatorio_de_Produtividade.pdf")
                 .contentType(MediaType.APPLICATION_PDF)
                 .body(bar);
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Empresa>> buscarTodos(){
-        return ResponseEntity.ok().body(servico.buscarTodos());
     }
 
     @PostMapping

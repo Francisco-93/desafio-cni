@@ -21,14 +21,14 @@ public class ManufaturaResource {
     @Autowired
     private ManufaturaService servico;
 
-    @GetMapping(value = ID)
-    public ResponseEntity<Manufatura> buscarPorId(@PathVariable Long id){
-        return ResponseEntity.ok().body(servico.buscarPorId(id));
-    }
-
     @GetMapping
     public ResponseEntity<List<Manufatura>> buscarTodos(){
         return ResponseEntity.ok().body(servico.buscarTodos());
+    }
+
+    @GetMapping(value = ID)
+    public ResponseEntity<Manufatura> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.ok().body(servico.buscarPorId(id));
     }
 
 }
